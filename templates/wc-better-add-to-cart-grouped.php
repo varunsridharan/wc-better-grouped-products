@@ -10,8 +10,9 @@ do_action( 'woocommerce_before_add_to_cart_form' );
             <tbody>
                 <?php
 				foreach ( $grouped_products as $product_id ) :
-                    $tr_class = 'current_prod';
+                    $tr_class = '';
                     $custom_qty = 0;
+                
                     if($product_id == $current_grouped_product){$tr_class = 'current_prod'; $custom_qty =1;}
 					if ( ! $product = wc_get_product( $product_id ) ) { continue; }
 					if('yes' === get_option('woocommerce_hide_out_of_stock_items') && ! $product->is_in_stock()){ continue;}
