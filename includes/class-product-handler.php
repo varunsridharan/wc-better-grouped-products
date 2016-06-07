@@ -22,25 +22,60 @@ class WC_Better_Grouped_Products_Handler {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
-        //$this->render_products();
+	public function __construct($template) {
+        $this->template = $template;
     }
     
     public function render_products(){
         global $product,$post;
         $return_value = '';
+        
         if($post->post_type !== 'product'){return;} 
         $current_product = $post->ID;
         $parent_product = wp_get_post_parent_id($post->ID);
         $childs = $this->get_child_products($parent_product);
         
+        if($this->template == 'plugin_template'){
+           $content = $this->custom_template_1($current_product,$childs,$parent_product);  
+        } else if($this->template == 'wc_default') {
+            $content = $this->wc_default_template($current_product,$childs,$parent_product);
+        }
+        
+        return $content;
+    }
+    
+    
+    public function wc_default_template($current_product,$childs,$parent_product){
+        global $product;  
+
+        $key = array_search($current_product, $childs);
+        
+        if($key == true){
+            unset($childs[$key]);
+            array_unshift($childs,$current_product);
+        }
+        
         ob_start();
-        wc_bgp_get_template('grouped-header.php');
+        wc_bgp_get_template('wc-better-add-to-cart-grouped.php',array(
+            'grouped_product'    => $product,
+            'grouped_products'   => $childs,
+            'current_grouped_product' => $current_product,
+            'parent_product' => $parent_product,
+            'quantites_required' => false
+        ));
+        $content = ob_get_clean(); 
+        ob_flush();
+        return $content;
+    }
+    
+    public function custom_template_1($current_product,$childs,$parent_product){
+        ob_start();
+        wc_bgp_get_template('wc-better-grouped-header.php');
         $header = ob_get_clean(); 
         ob_flush();
         
         ob_start();
-        wc_bgp_get_template('grouped-footer.php');
+        wc_bgp_get_template('wc-better-grouped-footer.php');
         $footer .= ob_get_clean(); 
         ob_flush();
         
@@ -49,7 +84,12 @@ class WC_Better_Grouped_Products_Handler {
     }
     
     public function get_child_products($id){
-        $args = array(
+        global $product;
+        
+        $posts_array = $product->get_children();
+        
+        if(empty($posts_array)){
+            $args = array(
             'posts_per_page'   => -1,
             'offset'           => 0,
             'post_type'        => 'product',
@@ -57,21 +97,23 @@ class WC_Better_Grouped_Products_Handler {
             'post_status'      => 'publish',
             'suppress_filters' => true,
             'fields' => 'ids'
-        );
-        $posts_array = get_posts( $args );
+            );
+            $posts_array = get_posts( $args );
+        }
+        
         return $posts_array;
     }
     
     public function generate_content($current_product,$childs,$parent_product){
-        $return_value = $this->generate_single_content($current_product);
+        $return_value = $this->custom_template_1_generate_single_content($current_product);
         foreach($childs as $child){
             if($child == $current_product){continue;}
-            $return_value .= $this->generate_single_content($child);
+            $return_value .= $this->custom_template_1_generate_single_content($child);
         }
         return $return_value;
     }
     
-    public function generate_single_content($id){
+    public function custom_template_1_generate_single_content($id){
         $return_value = '';
         $wc_bg_product = wc_get_product($id);
         $img_size = apply_filters('wc_better_grouped_products_image_size','shop_thumbnail');
@@ -85,7 +127,7 @@ class WC_Better_Grouped_Products_Handler {
         $array['addtocarttxt'] = $wc_bg_product->single_add_to_cart_text();
 
         ob_start();
-        wc_bgp_get_template('grouped-single.php',$array);
+        wc_bgp_get_template('wc-better-grouped-single.php',$array);
         $return_value .= ob_get_clean(); 
         ob_flush();
         return $return_value;

@@ -26,12 +26,13 @@ class WC_Better_Grouped_Products_Shortcode_Handler {
         add_shortcode('wc_bgp_listing',array($this,'list_products'));
     }
     
-    public function list_products(){
-        $new = new WC_Better_Grouped_Products_Handler;
+    public function list_products($atts){
+        $atts = shortcode_atts( array(
+            'template' => 'wc_default', 
+        ), $atts, 'wc_bgp_listing' );
+
+        $new = new WC_Better_Grouped_Products_Handler($atts['template']);
         $n = $new->render_products();
         return $n;
     }
-    
-	
-
 }
