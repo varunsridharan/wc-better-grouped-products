@@ -34,7 +34,7 @@ class WC_Better_Grouped_Products_Functions {
 	 * @since    1.0.0
 	 */
 	public function enqueue_styles() { 
-		wp_enqueue_style(WC_BGP_NAME.'frontend_style', WC_BGP_CSS. 'frontend.css', array(), WC_BGP_V, 'all' );
+		
 	}
     
 	/**
@@ -43,7 +43,7 @@ class WC_Better_Grouped_Products_Functions {
 	 * @since    1.0.0
 	 */
 	public function enqueue_scripts() { 
-		wp_enqueue_script(WC_BGP_NAME.'frontend_script', WC_BGP_JS.'frontend.js', array( 'jquery' ), WC_BGP_V, false );
+		
 	}
 
 }

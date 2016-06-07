@@ -20,17 +20,9 @@ class WC_Better_Grouped_Products_Admin {
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
         add_action( 'admin_init', array( $this, 'admin_init' ));
 
-        add_filter( 'plugin_row_meta', array($this, 'plugin_row_links' ), 10, 2 );
-        add_filter( 'plugin_action_links_'.WC_BGP_FILE, array($this,'plugin_action_links'),10,10);
-        add_filter( 'woocommerce_get_settings_pages',  array($this,'settings_page') ); 
-        //add_filter( 'woocommerce_screen_ids',array($this,'set_wc_screen_ids'),99);
-	}
-
-    public function set_wc_screen_ids($screens){ 
-        $screen = $screens; 
-      	$screen[] = '';
-        return $screen;
-    }
+        add_filter( 'plugin_row_meta', array($this, 'plugin_row_links' ), 10, 2 ); 
+        add_filter( 'woocommerce_get_settings_pages',  array($this,'settings_page') );  
+	} 
     
     /**
      * Inits Admin Sttings
@@ -84,22 +76,7 @@ class WC_Better_Grouped_Products_Admin {
         
         do_action('wc_bgp_admin_scripts',$current_screen); 
  
-	}
-     
- 
-    /**
-	 * Adds Some Plugin Options
-	 * @param  array  $plugin_meta
-	 * @param  string $plugin_file
-	 * @since 0.11
-	 * @return array
-	 */
-    public function plugin_action_links($action,$file,$plugin_meta,$status){
-        $actions[] = sprintf('<a href="%s">%s</a>', '#', __('Settings',WC_BGP_TXT) );
-        $actions[] = sprintf('<a href="%s">%s</a>', 'http://varunsridharan.in/plugin-support/', __('Contact Author',WC_BGP_TXT) );
-        $action = array_merge($actions,$action);
-        return $action;
-    }
+	} 
     
     /**
 	 * Adds Some Plugin Options
@@ -110,10 +87,8 @@ class WC_Better_Grouped_Products_Admin {
 	 */
 	public function plugin_row_links( $plugin_meta, $plugin_file ) {
 		if ( WC_BGP_FILE == $plugin_file ) {
-            $plugin_meta[] = sprintf('<a href="%s">%s</a>', '#', __('F.A.Q',WC_BGP_TXT) );
-            $plugin_meta[] = sprintf('<a href="%s">%s</a>', '#', __('View On Github',WC_BGP_TXT) );
-            $plugin_meta[] = sprintf('<a href="%s">%s</a>', '#', __('Report Issue',WC_BGP_TXT) );
-            $plugin_meta[] = sprintf('&hearts; <a href="%s">%s</a>', '#', __('Donate',WC_BGP_TXT) );
+            $plugin_meta[] = sprintf('<a href="%s">%s</a>', 'https://wordpress.org/plugins/wc-better-grouped-products/faq', __('F.A.Q',WC_BGP_TXT) ); 
+            $plugin_meta[] = sprintf('<a href="%s">%s</a>', 'https://wordpress.org/plugins/wc-better-grouped-products', __('Report Issue',WC_BGP_TXT) ); 
 		}
 		return $plugin_meta;
 	}	    

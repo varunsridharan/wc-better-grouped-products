@@ -9,6 +9,8 @@
  * @subpackage WC_Better_Grouped_Products/core
  * @since 1.0
  */
+if ( ! defined( 'WPINC' ) ) { die; }
+
 class WC_Better_Grouped_Products_Activator {
 	
     public function __construct() {

@@ -147,18 +147,11 @@ class WC_Better_Grouped_Products {
 		$this->define('WC_BGP_LANGUAGE_PATH',WC_BGP_PATH.'languages'); # Plugin Language Folder
 		$this->define('WC_BGP_ADMIN',WC_BGP_INC.'admin/'); # Plugin Admin Folder
 		$this->define('WC_BGP_SETTINGS',WC_BGP_ADMIN.'settings/'); # Plugin Settings Folder
-		$this->define('PLUGIN_ADDON',WC_BGP_PATH.'addons/');
         
 		$this->define('WC_BGP_URL',plugins_url('', __FILE__ ).'/');  # Plugin URL
 		$this->define('WC_BGP_CSS',WC_BGP_URL.'includes/css/'); # Plugin CSS URL
 		$this->define('WC_BGP_IMG',WC_BGP_URL.'includes/img/'); # Plugin IMG URL
 		$this->define('WC_BGP_JS',WC_BGP_URL.'includes/js/'); # Plugin JS URL
-        
-        
-        $this->define('PLUGIN_ADDON_URL',WC_BGP_URL.'addons/');  # Plugin URL
-		$this->define('PLUGIN_ADDON_CSS',PLUGIN_ADDON_URL.'includes/css/'); # Plugin CSS URL
-		$this->define('PLUGIN_ADDON_IMG',PLUGIN_ADDON_URL.'includes/img/'); # Plugin IMG URL
-		$this->define('PLUGIN_ADDON_JS',PLUGIN_ADDON_URL.'includes/js/'); # Plugin JS URL
     }
 	
     /**

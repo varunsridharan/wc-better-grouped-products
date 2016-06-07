@@ -9,6 +9,7 @@
  * @subpackage WC_Better_Grouped_Products/core
  * @since 1.0
  */
+if ( ! defined( 'WPINC' ) ) { die; }
 
 if ( ! class_exists( 'WC_Better_Grouped_Products_Dependencies' ) ){
     class WC_Better_Grouped_Products_Dependencies {
