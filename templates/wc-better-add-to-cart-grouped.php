@@ -11,7 +11,8 @@ do_action( 'woocommerce_before_add_to_cart_form' );
                 <?php
 				foreach ( $grouped_products as $product_id ) :
                     $tr_class = 'current_prod';
-                    if($product_id == $current_grouped_product){$tr_class = 'current_prod';}
+                    $custom_qty = 0;
+                    if($product_id == $current_grouped_product){$tr_class = 'current_prod'; $custom_qty =1;}
 					if ( ! $product = wc_get_product( $product_id ) ) { continue; }
 					if('yes' === get_option('woocommerce_hide_out_of_stock_items') && ! $product->is_in_stock()){ continue;}
 					$post    = $product->post;
@@ -26,7 +27,7 @@ do_action( 'woocommerce_before_add_to_cart_form' );
 									$quantites_required = true;
 									woocommerce_quantity_input( array(
 										'input_name'  => 'quantity[' . $product_id . ']',
-										'input_value' => ( isset( $_POST['quantity'][$product_id] ) ? wc_stock_amount( $_POST['quantity'][$product_id] ) : 0 ),
+										'input_value' => ( isset( $_POST['quantity'][$product_id] ) ? wc_stock_amount( $_POST['quantity'][$product_id] ) : $custom_qty ),
 										'min_value'   => apply_filters( 'woocommerce_quantity_input_min', 0, $product ),
 										'max_value'   => apply_filters( 'woocommerce_quantity_input_max', $product->backorders_allowed() ? '' : $product->get_stock_quantity(), $product )
 									) );
@@ -63,7 +64,7 @@ do_action( 'woocommerce_before_add_to_cart_form' );
             </tbody>
         </table>
 
-        <input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
+        <input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $parent_product ); ?>" />
 
         <?php if ( $quantites_required ) : ?>
             <?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
