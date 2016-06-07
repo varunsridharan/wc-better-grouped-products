@@ -20,7 +20,7 @@ do_action( 'woocommerce_before_add_to_cart_form' );
 					setup_postdata( $post );
 					?>
                     <tr class="<?php echo $tr_class; ?>">
-                        <td class="qty">
+                        <td>
                             <?php if ( $product->is_sold_individually() || ! $product->is_purchasable() ) : ?>
                                 <?php woocommerce_template_loop_add_to_cart(); ?>
                                     <?php else : ?>
