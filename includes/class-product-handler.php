@@ -35,9 +35,9 @@ class WC_Better_Grouped_Products_Handler {
         $parent_product = wp_get_post_parent_id($post->ID);
         $childs = $this->get_child_products($parent_product);
         
-        if($this->template == 'plugin_template'){
-           $content = $this->custom_template_1($current_product,$childs,$parent_product);  
-        } else if($this->template == 'wc_default') {
+        if($this->template == 'template_with_image'){
+           $content = $this->template_with_image($current_product,$childs,$parent_product);  
+        } else if($this->template == 'woocommerce') {
             $content = $this->wc_default_template($current_product,$childs,$parent_product);
         }
         
@@ -68,7 +68,7 @@ class WC_Better_Grouped_Products_Handler {
         return $content;
     }
     
-    public function custom_template_1($current_product,$childs,$parent_product){
+    public function template_with_image($current_product,$childs,$parent_product){
         ob_start();
         wc_bgp_get_template('wc-better-grouped-header.php');
         $header = ob_get_clean(); 

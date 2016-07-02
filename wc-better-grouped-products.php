@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       WooCommerce Better Grouped Products
  * Plugin URI:        https://wordpress.org/plugins/wc-better-grouped-products/
- * Description:       Sample Plugin For WooCommerce
+ * Description:       Enrich your visitor with best grouped products view
  * Version:           1.0
  * Author:            Varun Sridharan
  * Author URI:        http://varunsridharan.in

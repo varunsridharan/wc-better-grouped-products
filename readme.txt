@@ -7,18 +7,25 @@ Donate link:
 Requires at least: 3.0
 Tested up to: 4.3
 WC requires at least: 1.0
-WC tested up to: 2.4.6
-Stable tag: 0.1
+WC tested up to: 2.6
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
 
-A Simple Plugin Boiler Plate for woocommerce 
+Enrich your visitor with best grouped products view
 
 == Description ==
-A Simple Plugin Boiler Plate for woocommerce 
+Enrich your visitor with best grouped products view 
 
+**Shortcodes**
+`
+[wc_bgp_listing template template="wc_default"]
+[wc_bgp_listing template template="template_with_image"]
+`
 == Screenshots ==
+
 == Upgrade Notice ==
+
 == Frequently Asked Questions == 
 
 == Installation ==

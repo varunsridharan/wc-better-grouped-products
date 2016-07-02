@@ -73,22 +73,15 @@ class WC_Better_Grouped_Products {
        if(wc_bgp_is_request('admin')){
            $this->load_files(WC_BGP_ADMIN.'class-*.php');
        } 
-
-        do_action('wc_bgp_before_addons_load'); 
+ 
     }
     
     /**
      * Inits loaded Class
      */
     private function init_class(){
-        do_action('wc_bgp_before_init');
         self::$functions = new WC_Better_Grouped_Products_Functions;
         new WC_Better_Grouped_Products_Shortcode_Handler;
-
-        if(wc_bgp_is_request('admin')){
-            self::$admin = new WC_Better_Grouped_Products_Admin;
-        }
-        do_action('wc_bgp_after_init');
     }
     
     
