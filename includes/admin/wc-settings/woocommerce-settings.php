@@ -9,12 +9,12 @@
  */
 if ( ! defined( 'WPINC' ) ) { die; }
 
-if ( ! class_exists( 'WooCommerce_Simple_Settings' ) ) :
+if ( ! class_exists( 'WooCommerce_Better_Grouped_Products_settings_Class' ) ) :
 
 /**
  * WC_Admin_Settings_General
  */
-class WooCommerce_Simple_Settings extends WC_Settings_Page {
+class WooCommerce_Better_Grouped_Products_settings_Class extends WC_Settings_Page {
 
 	/**
 	 * Constructor.
@@ -116,4 +116,4 @@ class WooCommerce_Simple_Settings extends WC_Settings_Page {
 
 endif;
 
-return new WooCommerce_Simple_Settings();
+return new WooCommerce_Better_Grouped_Products_settings_Class();
