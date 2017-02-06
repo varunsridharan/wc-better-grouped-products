@@ -1,0 +1,116 @@
+# Copyright (C) 2017 WooCommerce Better Grouped Products
+# This file is distributed under the same license as the WooCommerce Better Grouped Products package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce Better Grouped Products 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wc-better-grouped-products-master\n"
+"POT-Creation-Date: 2017-02-06 04:03:06+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: bootstrap.php:51
+msgid "Cloning instances of the class is forbidden."
+msgstr ""
+
+#: bootstrap.php:63
+msgid "Unserializing instances of the class is forbidden."
+msgstr ""
+
+#: includes/admin/class-admin-init.php:43
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:44
+msgid "Contact Author"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:58
+msgid "F.A.Q"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:59
+msgid "View On Github"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:60
+msgid "Report Issue"
+msgstr ""
+
+#: includes/admin/class-admin-init.php:61
+msgid "Donate"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:32
+msgid "WC Better Grouped Products"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:56
+msgid "Hide Default WC Listing"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:57
+msgid "Diable Default WC Grouped Product Listing"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:64
+msgid "Show Plugin Template"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:65
+msgid "If checked this will replace the way of listing done by WC "
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:73
+msgid "Listing Template"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:74
+msgid "How would you like to see the grouped product listing, <br/> you can also use our shortcode <code>[wc_bgp_listing template template=\"woocommerce\"]</code>,<br/>Template Types : 1. woocommerce | 2. woocommerce_with_image"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:78
+msgid "Simple WooCommerce Style"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:79
+msgid "WooCommerce With Image"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:84
+msgid "Image Size"
+msgstr ""
+
+#: includes/admin/wc-settings/woocommerce-settings.php:86
+msgid "This will works only with woocommerce_with_image template"
+msgstr ""
+
+#: includes/functions.php:160
+msgid "General"
+msgstr ""
+
+#: includes/functions.php:163 includes/functions.php:175
+msgid "Save Changes"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "WooCommerce Better Grouped Products"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/wc-better-grouped-products/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Enrich your visitor with best grouped products view"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Varun Sridharan"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://varunsridharan.in"
+msgstr ""

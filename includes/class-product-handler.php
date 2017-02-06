@@ -22,8 +22,9 @@ class WC_Better_Grouped_Products_Handler {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct($template) {
-        $this->template = $template;
+	public function __construct($atts) {
+        $this->template = $atts['template'];
+        $this->image_size = $atts['image_size'];
     }
     
     public function render_products(){
@@ -35,7 +36,7 @@ class WC_Better_Grouped_Products_Handler {
         $parent_product = wp_get_post_parent_id($post->ID);
         $childs = $this->get_child_products($parent_product);
         
-        if($this->template == 'template_with_image'){
+        if($this->template == 'woocommerce_with_image'){
            $content = $this->template_with_image($current_product,$childs,$parent_product);  
         } else if($this->template == 'woocommerce') {
             $content = $this->wc_default_template($current_product,$childs,$parent_product);
@@ -76,7 +77,7 @@ class WC_Better_Grouped_Products_Handler {
         
         ob_start();
         wc_bgp_get_template('wc-better-grouped-footer.php');
-        $footer .= ob_get_clean(); 
+        $footer = ob_get_clean(); 
         ob_flush();
         
         $content = $this->generate_content($current_product,$childs,$parent_product);
@@ -116,7 +117,7 @@ class WC_Better_Grouped_Products_Handler {
     public function custom_template_1_generate_single_content($id){
         $return_value = '';
         $wc_bg_product = wc_get_product($id);
-        $img_size = apply_filters('wc_better_grouped_products_image_size','shop_thumbnail');
+        $img_size = apply_filters('wc_better_grouped_products_image_size',$this->image_size);
 
         $array = array();
         $array['product_link'] = get_permalink($id);

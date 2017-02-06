@@ -15,14 +15,17 @@ $wc_bgp_db_settins_values = array();
 add_action('wc_bgp_loaded','wc_bgp_get_settings_from_db',1);
 
 if(!function_exists('wc_bgp_option')){
-	function wc_bgp_option($key = ''){
-		global $wc_bgp_db_settins_values;
-		if($key == ''){return $wc_bgp_db_settins_values;}
-		if(isset($wc_bgp_db_settins_values[WC_BOF_DB.$key])){
-			return $wc_bgp_db_settins_values[WC_BOF_DB.$key];
-		} 
-		
-		return false;
+	function wc_bgp_option($key = '',$default = false){
+        if($key == ''){return $default;}
+        
+        $value = get_option(WC_BGP_DB.$key,true);
+        
+        if($value){
+            return $value;
+        } else {
+            return $default;
+        }
+         
 	}
 }
 
@@ -37,7 +40,7 @@ if(!function_exists('wc_bgp_get_settings_from_db')){
 		$values = array();
 		foreach($section as $settings){
 			foreach($settings as $set){
-				$db_val = get_option(WC_BOF_DB.$set['id']);
+				$db_val = get_option(WC_BGP_DB.$set['id']);
 				if(is_array($db_val)){ unset($db_val['section_id']); $values = array_merge($db_val,$values); }
 			}
 		}        
@@ -135,7 +138,7 @@ if(!function_exists('wc_bgp_settings_get_categories')){
 
 if(!function_exists('wc_bgp_settings_page_link')){
     function wc_bgp_settings_page_link($tab = '',$section = ''){
-        $settings_url = admin_url('admin.php?page='.WC_BOF_SLUG.'-settings');
+        $settings_url = admin_url('admin.php?page='.WC_BGP_SLUG.'-settings');
         if(!empty($tab)){$settings_url .= '&tab='.$tab;}
         if(!empty($section)){$settings_url .= '#'.$section;}
         return $settings_url;

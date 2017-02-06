@@ -82,6 +82,10 @@ class WC_Better_Grouped_Products {
     private function init_class(){
         self::$functions = new WC_Better_Grouped_Products_Functions;
         new WC_Better_Grouped_Products_Shortcode_Handler;
+        
+        if(wc_bgp_is_request('admin')){
+            self::$admin = new WC_Better_Grouped_Products_Admin;     
+        }
     }
     
     

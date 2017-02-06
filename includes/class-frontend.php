@@ -23,27 +23,29 @@ class WC_Better_Grouped_Products_Functions {
 	 * @since    1.0.0
 	 */
 	public function __construct() {
-        add_action( 'wp_enqueue_scripts', array($this,'enqueue_styles') );
-        add_action( 'wp_enqueue_scripts', array($this,'enqueue_scripts') );
+        add_action('woocommerce_init',array($this,'check_wc_init')); 
+    }
+    
+    public function check_wc_init(){
+        //add_action( 'woocommerce_grouped_add_to_cart', 'woocommerce_grouped_add_to_cart', 30 );
+        $status = wc_bgp_option('disable_default_grouped_list');
+        if($status == 'yes'){
+            remove_action('woocommerce_grouped_add_to_cart','woocommerce_grouped_add_to_cart',30);
+        }
+        
+        $change_way_listing_status = wc_bgp_option('change_way_listing');
+        if($change_way_listing_status == 'yes'){
+            add_action("woocommerce_grouped_add_to_cart",array($this,'render_plugin_template'));
+        }
+        
     }
     
     
-	/**
-	 * Register the stylesheets for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_styles() { 
-		
-	}
-    
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * @since    1.0.0
-	 */
-	public function enqueue_scripts() { 
-		
-	}
-
+    public function render_plugin_template(){
+        $template = wc_bgp_option('listing_template','woocommerce');
+        $template_Image_size = wc_bgp_option('template_image_size','shop_thumbnail'); 
+        echo do_shortcode('[wc_bgp_listing template="'.$template.'" image_size="'.$template_Image_size.'"]');
+        
+    }
+     
 }

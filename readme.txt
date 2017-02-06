@@ -2,12 +2,12 @@
 Contributors: varunms
 Author URI: http://varunsridharan.in/
 Plugin URL: https://wordpress.org/plugins/wc-better-grouped-products/
-Tags: WooCommerce
+Tags: WooCommerce,products,wc-products,wc-grouped-products,grouped-products,woocommerce template,product template,grouped
 Donate link: 
 Requires at least: 3.0
-Tested up to: 4.3
+Tested up to: 4.5
 WC requires at least: 1.0
-WC tested up to: 2.6
+WC tested up to: 2.7
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html 
@@ -19,10 +19,13 @@ Enrich your visitor with best grouped products view
 
 **Shortcodes**
 `
-[wc_bgp_listing template template="wc_default"]
-[wc_bgp_listing template template="template_with_image"]
+[wc_bgp_listing template template="woocommerce"]
+[wc_bgp_listing template template="woocommerce_with_image"]
 `
 == Screenshots ==
+1. Settings Page
+2. Simple WooCommerce Style
+3. WooCommerce With Image Style
 
 == Upgrade Notice ==
 
@@ -52,11 +55,11 @@ The manual installation method involves downloading our plugin and uploading it 
  * OR via direct ZIP upload:
  * Upload the ZIP package via 'Plugins > Add New > Upload' in your WP Admin
  * OR via FTP upload:
- * Upload `WooCommerce-Plugin-Boiler-Plate` folder to the `/wp-content/plugins/` directory
+ * Upload `wc-better-grouped-products` folder to the `/wp-content/plugins/` directory
  
 2. Activate the plugin through the 'Plugins' menu in WordPress
  
 
 == Changelog == 
-= 0.1 =
+= 1.0 =
 * Base Version

@@ -29,9 +29,10 @@ class WC_Better_Grouped_Products_Shortcode_Handler {
     public function list_products($atts){
         $atts = shortcode_atts( array(
             'template' => 'wc_default', 
+            'image_size' => 'shop_thumbnail',
         ), $atts, 'wc_bgp_listing' );
 
-        $new = new WC_Better_Grouped_Products_Handler($atts['template']);
+        $new = new WC_Better_Grouped_Products_Handler($atts);
         $n = $new->render_products();
         return $n;
     }
